@@ -102,7 +102,7 @@ public class UsuariosFacadeREST extends AbstractFacade<Usuarios> {
         return super.validarUsuario(mapa.get("correo"));
         
     }
-    
+    /*
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     @Path("Mostrarhijo")
@@ -113,7 +113,21 @@ public class UsuariosFacadeREST extends AbstractFacade<Usuarios> {
         System.out.println("email:"+mapa.get("correo"));
         return super.mostrarHijo(mapa.get("correo"));
         
+    }*/
+    @POST
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Path("Mostrarhijo")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response mostrarHijo(String usuario){
+        Gson gson = new Gson();
+        HashMap<String, String> mapa = gson.fromJson(usuario,HashMap.class);
+        System.out.println("usuario:"+mapa.get("usuario"));
+
+        return super.mostrarHijo(mapa.get("usuario"));
+        
     }
+    
+    
     
     @Override
     protected EntityManager getEntityManager() {
